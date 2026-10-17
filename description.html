@@ -1,4 +1,4 @@
-<b>File mail by the service that sent it, then summarize or reply.</b>
+<b>File every message by the service that sent it.</b>
 
 <b>AI Sorting</b> creates a folder under the inbox for each service, such as LinkedIn, Google, or GitHub, and moves that mail into it. Mail from a person stays in the inbox. Connect ChatGPT or Gemini when you want a summary, a draft reply, or a service the rules cannot name.
 
@@ -6,6 +6,7 @@
 <ul>
   <li>A folder is created the first time mail arrives from that service.</li>
   <li>New inbox mail can be filed as it arrives.</li>
+  <li><b>Sort messages</b> files every message in the open folder, or every message you selected. A large folder can take a long time.</li>
   <li>Summarize an open thread, or draft a reply, in English.</li>
   <li>The API key stays in this profile. A message is sent to the provider only when the model is called.</li>
 </ul>
@@ -25,8 +26,8 @@ Open <b>Settings</b> from the AI Sorting toolbar button, or from the add-on card
 <ul>
   <li><b>Provider</b> — ChatGPT or Gemini.</li>
   <li><b>API key</b> — the key for that provider.</li>
-  <li><b>Model</b> — leave this blank to use the provider’s default model, or type a model name.</li>
-  <li><b>Sort new inbox mail</b> — move new messages into a folder named for the sending service.</li>
+  <li><b>Model</b> — leave this blank to use the provider’s default model, or type a model name. The field has no placeholder.</li>
+  <li><b>Sort new inbox mail</b> — move each new message into a folder named for the service that sent it.</li>
   <li><b>Ask the model when rules are unsure</b> — sends the sender, the subject, and the beginning of the message. At most 40 messages an hour.</li>
 </ul>
 Choose <b>Save</b>, then <b>Test connection</b>. The status line confirms that the provider answered.
@@ -34,8 +35,9 @@ Choose <b>Save</b>, then <b>Test connection</b>. The status line confirms that t
 <b>Sort a folder</b>
 Click the <b>AI Sorting</b> button on the mail toolbar.
 <ul>
-  <li><b>Sort messages</b> sorts every message in the open folder. If more than one message is selected, it sorts every selected message. A large folder can take a long time. Leave the window open until the count appears.</li>
-  <li>The popup lists the service folders and how many messages went into each, and how many stayed in the inbox.</li>
+  <li><b>Sort messages</b> sorts every message in the open folder. If more than one message is selected, it sorts every selected message.</li>
+  <li>Sorting keeps going if you close the menu. Open it again to see the progress and the count.</li>
+  <li>The count lists each service folder and how many messages went there, and how many stayed in the inbox.</li>
   <li><b>Settings</b> opens the options page.</li>
 </ul>
 Mail from a person stays in the inbox. Messages the rules cannot place stay there too when the model is off, the API key is missing, or the hourly limit is reached.

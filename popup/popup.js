@@ -4,24 +4,15 @@ const statusEl = document.querySelector("#status");
 const errorEl = document.querySelector("#error");
 const sortButton = document.querySelector("#sort");
 
+let timer = 0;
+
 function showError(error) {
   errorEl.hidden = !error;
   errorEl.textContent = error ? explain(error) : "";
 }
 
-async function listedIds(list) {
-  const ids = [];
-  let page = list;
-  while (page) {
-    for (const message of page.messages || []) {
-      ids.push(message.id);
-    }
-    if (!page.id) {
-      break;
-    }
-    page = await browser.messages.continueList(page.id);
-  }
-  return ids;
+function isRunning(status) {
+  return status.phase === "listing" || status.phase === "sorting";
 }
 
 async function currentMailTab() {
@@ -37,23 +28,7 @@ async function currentMailTab() {
   return tabs[0] || null;
 }
 
-async function targetIds() {
-  const tab = await currentMailTab();
-  if (!tab) {
-    throw new Error("no-folder");
-  }
-  const selected = await browser.mailTabs.getSelectedMessages(tab.id);
-  if ((selected.messages || []).length > 1) {
-    return listedIds(selected);
-  }
-  const folderId = tab.displayedFolder && tab.displayedFolder.id;
-  if (!folderId) {
-    throw new Error("no-folder");
-  }
-  return listedIds(await browser.messages.list(folderId));
-}
-
-function report(counts) {
+function reportLines(counts) {
   const folders = Object.entries(counts.folders || {}).sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]));
   const lines = [];
   if (folders.length) {
@@ -74,28 +49,99 @@ function report(counts) {
   if (counts.failed) {
     lines.push(browser.i18n.getMessage("failedNote", String(counts.failed)));
     if (counts.error) {
-      lines.push(counts.error);
+      lines.push(explain(new Error(counts.error)));
     }
   }
-  statusEl.textContent = lines.join(" ");
+  return lines;
+}
+
+function render(status) {
+  const running = isRunning(status);
+  sortButton.disabled = running;
+  statusEl.setAttribute("aria-busy", running ? "true" : "false");
+  if (!status || status.phase === "idle") {
+    statusEl.textContent = "";
+    showError(null);
+    return;
+  }
+  if (status.phase === "error") {
+    showError(new Error(status.fatal || "empty"));
+  } else {
+    showError(null);
+  }
+  const summary = reportLines(status.counts || {});
+  const lines = [];
+  if (status.phase === "listing") {
+    lines.push(browser.i18n.getMessage("sortingListing"));
+  } else if (
+    status.phase === "sorting" ||
+    (status.phase === "error" && status.processed > 0) ||
+    (status.phase === "done" && !summary.length)
+  ) {
+    lines.push(browser.i18n.getMessage("sortingProgress", [String(status.processed), String(status.total)]));
+  }
+  lines.push(...summary);
+  statusEl.textContent = lines.filter(Boolean).join(" ");
+}
+
+function stopWatch() {
+  if (!timer) {
+    return;
+  }
+  window.clearInterval(timer);
+  timer = 0;
+}
+
+async function refresh() {
+  try {
+    const status = await browser.runtime.sendMessage({ type: "sort-status" });
+    render(status);
+    if (!isRunning(status)) {
+      stopWatch();
+    }
+    return status;
+  } catch (error) {
+    showError(error);
+    return null;
+  }
+}
+
+function watch() {
+  if (timer) {
+    return;
+  }
+  timer = window.setInterval(() => {
+    refresh();
+  }, 400);
 }
 
 sortButton.addEventListener("click", async () => {
   showError(null);
   sortButton.disabled = true;
-  statusEl.textContent = "Sorting every message. This can take a long time.";
   try {
-    const messageIds = await targetIds();
-    const counts = await browser.runtime.sendMessage({ type: "classify-many", messageIds });
-    report(counts);
+    const tab = await currentMailTab();
+    if (!tab) {
+      throw new Error("no-folder");
+    }
+    const status = await browser.runtime.sendMessage({ type: "sort-start", tabId: tab.id });
+    render(status);
+    if (isRunning(status)) {
+      watch();
+    }
   } catch (error) {
-    statusEl.textContent = "";
-    showError(error);
-  } finally {
     sortButton.disabled = false;
+    showError(error);
   }
 });
 
 document.querySelector("#options").addEventListener("click", () => {
   browser.runtime.openOptionsPage();
+});
+
+window.addEventListener("pagehide", stopWatch);
+
+refresh().then(status => {
+  if (status && isRunning(status)) {
+    watch();
+  }
 });

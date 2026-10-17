@@ -165,6 +165,20 @@
       }
     }
   },
+  "sortingListing": {
+    "message": "Reading the folder."
+  },
+  "sortingProgress": {
+    "message": "Sorted $DONE$ of $TOTAL$.",
+    "placeholders": {
+      "done": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
   "undecidedNote": {
     "message": "Not sorted: $COUNT$.",
     "placeholders": {

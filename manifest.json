@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "AI Sorting",
   "description": "Files mail into a folder for each service it comes from. Connect ChatGPT or Gemini to summarize a thread or draft a reply.",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
@@ -17,6 +17,7 @@
   },
   "permissions": [
     "storage",
+    "alarms",
     "messagesRead",
     "messagesMove",
     "accountsRead",

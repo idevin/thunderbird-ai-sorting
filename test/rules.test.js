@@ -7,6 +7,7 @@ import {
   parseGeminiContent,
   parseModelJson,
   parseOpenAiContent,
+  providerErrorText,
   redact,
 } from "../lib/providers.js";
 import { normalizeSettings } from "../lib/settings.js";
@@ -177,6 +178,28 @@ test("provider payloads and model JSON are parsed", () => {
   assert.equal(parseModelJson('note {"category":"other"} thanks').category, "other");
   assert.throws(() => categoryFromModel('{"category":"spam"}'), /unknown-category/);
   assert.throws(() => parseModelJson("no object"), /no-json/);
+});
+
+test("a provider error is shown as its message", () => {
+  const body = JSON.stringify({
+    error: {
+      code: 429,
+      message:
+        "You exceeded your current quota, please check your plan and billing details.\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests",
+    },
+  });
+  const text = providerErrorText(`provider:429:${body}`);
+  assert.equal(text.includes("{"), false);
+  assert.equal(text.includes("\n"), false);
+  assert.match(text, /^You exceeded your current quota, please check your plan and billing details\. \* Quota exceeded/);
+  assert.equal(
+    providerErrorText(JSON.stringify({ error: { message: "Incorrect API key provided", type: "invalid_request_error" } })),
+    "Incorrect API key provided"
+  );
+  const truncated = '{ "error": { "code": 429, "message": "You exceeded your current quota';
+  assert.equal(providerErrorText(`provider:429:${truncated}`), "You exceeded your current quota");
+  assert.equal(providerErrorText("provider:502:"), "");
+  assert.equal(providerErrorText("bad gateway"), "bad gateway");
 });
 
 test("secrets are redacted and settings keep each provider", () => {
