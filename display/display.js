@@ -1,5 +1,5 @@
 import { explain } from "../lib/explain.js";
-import { TAGS, categoryFromTags } from "../lib/tags.js";
+import { TAGS, categoryFromTags, ensureTags } from "../lib/tags.js";
 
 const categoryEl = document.querySelector("#category");
 const summaryEl = document.querySelector("#summary");
@@ -111,13 +111,14 @@ document.querySelector("#reply").addEventListener("click", () => {
 });
 
 displayedMessage()
-  .then(message => {
+  .then(async message => {
     if (!message) {
       categoryEl.textContent = browser.i18n.getMessage("errorNoMessage");
       setBusy(false);
       return;
     }
     messageId = message.id;
+    await ensureTags();
     categoryEl.textContent = categoryLabel(categoryFromTags(message.tags), null);
     setBusy(false);
   })

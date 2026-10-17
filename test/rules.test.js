@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { classifyHeuristic } from "../lib/heuristic.js";
-import { availableTagName } from "../lib/tags.js";
+import { resolveTagKeys } from "../lib/tags.js";
 import {
   categoryFromModel,
   parseGeminiContent,
@@ -13,12 +13,17 @@ import { normalizeSettings } from "../lib/settings.js";
 import { messageText, replyHtml, stripHtml } from "../lib/text.js";
 import { clipThread, extractMessageIds, normalizeMessageId, normalizeSubject } from "../lib/thread.js";
 
-test("a tag name avoids Thunderbird's built-in Important tag", () => {
-  const used = new Set(["Important", "Work", "Personal", "To Do", "Later"]);
-  assert.equal(availableTagName("AI Important", used), "AI Important");
-  assert.equal(availableTagName("Important", used), "Important (AI)");
-  used.add("Important (AI)");
-  assert.equal(availableTagName("Important", used), "Important (AI 2)");
+test("an existing Important tag is reused", () => {
+  const keys = resolveTagKeys(
+    [
+      { key: "$label1", tag: "Important" },
+      { key: "$label2", tag: "Work" },
+    ],
+    { important: "Important", newsletters: "Newsletters", social: "Social" }
+  );
+  assert.equal(keys.important, "$label1");
+  assert.equal(keys.newsletters, "ai-newsletters");
+  assert.equal(keys.social, "ai-social");
 });
 
 test("list headers are newsletters even from a social domain", () => {

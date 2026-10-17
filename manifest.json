@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "AI Sorting",
   "description": "Sort messages into Important, Newsletters, and Social. Connect ChatGPT, OpenRouter, Gemini, or Grok to summarize a thread or draft a reply.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
