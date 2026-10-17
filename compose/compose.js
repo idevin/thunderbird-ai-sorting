@@ -1,4 +1,7 @@
 import { explain } from "../lib/explain.js";
+import { applyI18n } from "../lib/i18n.js";
+
+applyI18n();
 
 const instructionEl = document.querySelector("#instruction");
 const statusEl = document.querySelector("#status");

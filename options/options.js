@@ -1,6 +1,9 @@
 import { explain } from "../lib/explain.js";
+import { applyI18n } from "../lib/i18n.js";
 import { PROVIDERS, complete } from "../lib/providers.js";
 import { loadSettings, saveSettings } from "../lib/settings.js";
+
+applyI18n();
 
 const providerEl = document.querySelector("#provider");
 const keyEl = document.querySelector("#api-key");
