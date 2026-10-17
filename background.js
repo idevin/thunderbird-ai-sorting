@@ -3,22 +3,17 @@ import { classifyIds, classifyMessage, loadAccountEmails } from "./lib/classify.
 import { redact } from "./lib/providers.js";
 import { loadSettings } from "./lib/settings.js";
 
-const MAX_NEW = 200;
-
-async function eachMessage(list, limit) {
+async function eachMessage(list) {
   const messages = [];
   let page = list;
-  while (page && messages.length < limit) {
+  while (page) {
     messages.push(...(page.messages || []));
-    if (!page.id || messages.length >= limit) {
-      if (page.id) {
-        browser.messages.abortList(page.id).catch(() => {});
-      }
+    if (!page.id) {
       break;
     }
     page = await browser.messages.continueList(page.id);
   }
-  return messages.slice(0, limit);
+  return messages;
 }
 
 browser.messages.onNewMailReceived.addListener(async (folder, list) => {
@@ -29,7 +24,7 @@ browser.messages.onNewMailReceived.addListener(async (folder, list) => {
   if (!settings.autoClassify) {
     return;
   }
-  const messages = await eachMessage(list, MAX_NEW);
+  const messages = await eachMessage(list);
   const accountEmails = await loadAccountEmails();
   const bookCache = new Map();
   for (const message of messages) {

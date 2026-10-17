@@ -110,7 +110,7 @@
     "message": "Settings"
   },
   "popupLead": {
-    "message": "If more than one message is selected, those messages are sorted. Otherwise the current page of this folder is sorted, up to 50 messages. Tags appear in the message list and in the quick filter."
+    "message": "If more than one message is selected, those messages are sorted. Otherwise the whole open folder is sorted."
   },
   "composeLead": {
     "message": "Replies and summaries are written in English."

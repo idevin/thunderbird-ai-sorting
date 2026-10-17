@@ -9,25 +9,19 @@ function showError(error) {
   errorEl.textContent = error ? explain(error) : "";
 }
 
-async function listedIds(list, limit) {
+async function listedIds(list) {
   const ids = [];
   let page = list;
-  while (page && ids.length < limit) {
+  while (page) {
     for (const message of page.messages || []) {
       ids.push(message.id);
-      if (ids.length >= limit) {
-        break;
-      }
     }
-    if (!page.id || ids.length >= limit) {
-      if (page.id) {
-        browser.messages.abortList(page.id).catch(() => {});
-      }
+    if (!page.id) {
       break;
     }
     page = await browser.messages.continueList(page.id);
   }
-  return ids.slice(0, limit);
+  return ids;
 }
 
 async function currentMailTab() {
@@ -50,13 +44,13 @@ async function targetIds() {
   }
   const selected = await browser.mailTabs.getSelectedMessages(tab.id);
   if ((selected.messages || []).length > 1) {
-    return listedIds(selected, 50);
+    return listedIds(selected);
   }
   const folderId = tab.displayedFolder && tab.displayedFolder.id;
   if (!folderId) {
     throw new Error("no-folder");
   }
-  return listedIds(await browser.messages.list(folderId), 50);
+  return listedIds(await browser.messages.list(folderId));
 }
 
 function report(counts) {
