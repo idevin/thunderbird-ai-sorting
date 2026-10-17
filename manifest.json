@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "__MSG_extensionName__",
-  "description": "__MSG_extensionDescription__",
-  "version": "1.0.3",
+  "name": "AI Sorting",
+  "description": "Sort messages into Important, Newsletters, and Social. Connect ChatGPT, OpenRouter, Gemini, or Grok to summarize a thread or draft a reply.",
+  "version": "1.0.4",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
@@ -40,17 +40,17 @@
     "open_in_tab": true
   },
   "action": {
-    "default_title": "__MSG_actionTitle__",
+    "default_title": "AI Sorting",
     "default_popup": "popup/popup.html",
     "default_icon": "icons/icon-32.png"
   },
   "message_display_action": {
-    "default_title": "__MSG_displayTitle__",
+    "default_title": "Summarize and reply",
     "default_popup": "display/display.html",
     "default_icon": "icons/icon-32.png"
   },
   "compose_action": {
-    "default_title": "__MSG_composeTitle__",
+    "default_title": "Draft with AI",
     "default_popup": "compose/compose.html",
     "default_icon": "icons/icon-32.png"
   }

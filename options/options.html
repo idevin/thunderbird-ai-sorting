@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>__MSG_optionsTitle__</title>
+    <title>AI Sorting</title>
     <link rel="stylesheet" href="../ui.css" />
     <link rel="stylesheet" href="options.css" />
   </head>
   <body>
     <main>
-      <h1>__MSG_optionsTitle__</h1>
-      <p class="lead">__MSG_optionsLead__</p>
+      <h1>AI Sorting</h1>
+      <p class="lead">Rules on this computer sort the obvious messages. The model is used when you ask for it, or when a message is hard to sort.</p>
 
       <label class="field">
-        <span>__MSG_optionProvider__</span>
+        <span>Provider</span>
         <select id="provider">
           <option value="openai">ChatGPT</option>
           <option value="openrouter">OpenRouter</option>
@@ -22,37 +22,37 @@
       </label>
 
       <label class="field">
-        <span>__MSG_optionApiKey__</span>
+        <span>API key</span>
         <input id="api-key" type="password" autocomplete="off" spellcheck="false" />
       </label>
 
       <label class="field">
-        <span>__MSG_optionModel__</span>
+        <span>Model</span>
         <input id="model" type="text" autocomplete="off" spellcheck="false" />
-        <span class="hint">__MSG_optionModelHelp__</span>
+        <span class="hint">Leave this blank to use the provider’s default model.</span>
       </label>
 
       <label class="option" for="auto">
         <input id="auto" type="checkbox" />
         <span>
-          <span class="option-title">__MSG_optionAutoTitle__</span>
-          <span class="option-help">__MSG_optionAutoHelp__</span>
+          <span class="option-title">Sort new inbox mail</span>
+          <span class="option-help">Tag messages as they arrive in the inbox.</span>
         </span>
       </label>
 
       <label class="option" for="use-ai">
         <input id="use-ai" type="checkbox" />
         <span>
-          <span class="option-title">__MSG_optionAiTitle__</span>
-          <span class="option-help">__MSG_optionAiHelp__</span>
+          <span class="option-title">Ask the model when rules are unsure</span>
+          <span class="option-help">Sends the sender, the subject, and the beginning of the message. At most 40 messages an hour.</span>
         </span>
       </label>
 
-      <p class="hint">__MSG_privacyNote__</p>
+      <p class="hint">Rules run on this computer. The API key stays in this profile. The subject and a short excerpt are sent to the selected provider only when the model is called.</p>
 
       <div class="row">
-        <button id="save" class="primary" type="button">__MSG_save__</button>
-        <button id="test" type="button">__MSG_test__</button>
+        <button id="save" class="primary" type="button">Save</button>
+        <button id="test" type="button">Test connection</button>
       </div>
 
       <p id="status" role="status"></p>

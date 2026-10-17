@@ -1,8 +1,5 @@
 import { explain } from "../lib/explain.js";
-import { applyI18n } from "../lib/i18n.js";
 import { TAGS, categoryFromTags } from "../lib/tags.js";
-
-applyI18n();
 
 const categoryEl = document.querySelector("#category");
 const summaryEl = document.querySelector("#summary");
