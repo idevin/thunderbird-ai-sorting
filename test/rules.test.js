@@ -26,7 +26,7 @@ test("an existing Important tag is reused", () => {
   assert.equal(keys.social, "ai-social");
 });
 
-test("list headers are newsletters even from a social domain", () => {
+test("mail from a known service is filed under that service", () => {
   const decision = classifyHeuristic({
     headers: { "List-Unsubscribe": ["<mailto:bye@linkedin.com>"] },
     author: "LinkedIn <noreply@linkedin.com>",
@@ -34,91 +34,91 @@ test("list headers are newsletters even from a social domain", () => {
     to: ["me@example.com"],
     accountEmails: ["me@example.com"],
   });
-  assert.deepEqual(decision, { category: "newsletters", confident: true });
+  assert.deepEqual(decision, { service: "LinkedIn", confident: true });
 });
 
-test("precedence bulk and auto-submitted are newsletters", () => {
+test("bulk mail uses the sender's service and personal mail stays in the inbox", () => {
   assert.equal(
     classifyHeuristic({
       headers: { Precedence: "bulk" },
       author: "News <desk@example.com>",
-    }).category,
-    "newsletters"
+    }).service,
+    "Example"
   );
   assert.equal(
     classifyHeuristic({
       headers: { "Auto-Submitted": "auto-generated" },
-      author: "Bot <bot@example.com>",
-    }).category,
-    "newsletters"
+      author: "Bot <bot@shop.example>",
+    }).service,
+    "Shop"
   );
-  assert.equal(
+  assert.deepEqual(
     classifyHeuristic({
       headers: { "Auto-Submitted": "no" },
       author: "Ann <ann@example.com>",
       to: ["me@example.com"],
       accountEmails: ["me@example.com"],
-    }).category,
-    "important"
+    }),
+    { service: null, confident: false }
   );
 });
 
-test("a social domain stays social, including noreply", () => {
+test("a known service keeps its name, including noreply", () => {
   assert.equal(
     classifyHeuristic({
       author: "LinkedIn <noreply@linkedin.com>",
       headers: {},
-    }).category,
-    "social"
+    }).service,
+    "LinkedIn"
   );
   assert.equal(
     classifyHeuristic({
       author: "Instagram <note@mail.instagram.com>",
       headers: {},
-    }).category,
-    "social"
+    }).service,
+    "Instagram"
   );
   assert.equal(
     classifyHeuristic({
       author: "X <hi@x.com>",
       headers: {},
-    }).category,
-    "social"
+    }).service,
+    "X"
   );
 });
 
-test("a lookalike domain is not social", () => {
+test("a lookalike domain is not treated as a known service", () => {
   const decision = classifyHeuristic({
     headers: {},
     author: "Pat <a@notx.com>",
   });
-  assert.deepEqual(decision, { category: null, confident: false });
+  assert.deepEqual(decision, { service: null, confident: false });
 });
 
-test("bulk local-parts are newsletters and personal mail is important", () => {
+test("bulk local-parts name a folder and personal mail stays in the inbox", () => {
   assert.equal(
     classifyHeuristic({
       headers: {},
       author: "Shop <noreply@shop.example>",
-    }).category,
-    "newsletters"
+    }).service,
+    "Shop"
   );
   assert.equal(
     classifyHeuristic({
       headers: {},
-      author: "Ada <ada@example.com>",
+      author: "Ada <ada@gmail.com>",
       inAddressBook: true,
-    }).category,
-    "important"
+    }).service,
+    ""
   );
-  assert.equal(
+  assert.deepEqual(
     classifyHeuristic({
       headers: {},
       author: "Ada <ada@example.com>",
       to: ["Me <me@example.com>"],
       accountEmails: ["me@example.com"],
-    }).category,
-    "important"
+    }),
+    { service: null, confident: false }
   );
 });
 

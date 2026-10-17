@@ -2,13 +2,8 @@ import { draftInCompose, draftReply, summarizeMessage } from "./lib/assist.js";
 import { classifyIds, classifyMessage, loadAccountEmails } from "./lib/classify.js";
 import { redact } from "./lib/providers.js";
 import { loadSettings } from "./lib/settings.js";
-import { ensureTags } from "./lib/tags.js";
 
 const MAX_NEW = 200;
-
-ensureTags().catch(error => {
-  console.error("AI Sorting", redact(error && error.message));
-});
 
 async function eachMessage(list, limit) {
   const messages = [];

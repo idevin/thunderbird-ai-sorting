@@ -60,14 +60,14 @@ async function targetIds() {
 }
 
 function report(counts) {
-  const lines = [
-    browser.i18n.getMessage("classifyCounts", [
-      String(counts.important || 0),
-      String(counts.newsletters || 0),
-      String(counts.social || 0),
-      String(counts.other || 0),
-    ]),
-  ];
+  const folders = Object.entries(counts.folders || {}).sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]));
+  const lines = [];
+  if (folders.length) {
+    lines.push(folders.map(([name, count]) => `${name} ${count}`).join(", ") + ".");
+  }
+  if (counts.inbox) {
+    lines.push(`Left in the inbox: ${counts.inbox}.`);
+  }
   if (counts.undecided) {
     lines.push(browser.i18n.getMessage("undecidedNote", String(counts.undecided)));
   }

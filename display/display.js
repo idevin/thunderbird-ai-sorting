@@ -1,5 +1,4 @@
 import { explain } from "../lib/explain.js";
-import { TAGS, categoryFromTags, ensureTags } from "../lib/tags.js";
 
 const categoryEl = document.querySelector("#category");
 const summaryEl = document.querySelector("#summary");
@@ -25,18 +24,13 @@ function setBusy(next) {
   }
 }
 
-function categoryLabel(category, source) {
-  if (!category) {
-    return browser.i18n.getMessage("categoryNone");
+function folderLabel(message) {
+  const folder = message && message.folder;
+  const special = (folder && folder.specialUse) || [];
+  if (!folder || folder.type === "inbox" || special.includes("inbox")) {
+    return "Inbox";
   }
-  const name = TAGS[category]
-    ? browser.i18n.getMessage(TAGS[category].nameKey)
-    : browser.i18n.getMessage("categoryOther");
-  if (source !== "rules" && source !== "ai") {
-    return name;
-  }
-  const via = browser.i18n.getMessage(source === "ai" ? "sourceAi" : "sourceRules");
-  return browser.i18n.getMessage("categoryWithSource", [name, via]);
+  return folder.name || "Inbox";
 }
 
 async function displayedMessage() {
@@ -55,7 +49,7 @@ function showOutcome(result) {
     return;
   }
   if (result.outcome === "undecided") {
-    categoryEl.textContent = browser.i18n.getMessage("categoryNone");
+    categoryEl.textContent = "Inbox";
     statusEl.textContent = browser.i18n.getMessage("undecidedNote", "1");
     return;
   }
@@ -64,7 +58,7 @@ function showOutcome(result) {
     return;
   }
   statusEl.textContent = "";
-  categoryEl.textContent = categoryLabel(result.category, result.source);
+  categoryEl.textContent = result.service || "Inbox";
 }
 
 async function run(task) {
@@ -118,8 +112,7 @@ displayedMessage()
       return;
     }
     messageId = message.id;
-    await ensureTags();
-    categoryEl.textContent = categoryLabel(categoryFromTags(message.tags), null);
+    categoryEl.textContent = folderLabel(message);
     setBusy(false);
   })
   .catch(error => {
