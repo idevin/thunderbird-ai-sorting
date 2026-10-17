@@ -1,5 +1,5 @@
 import { explain } from "../lib/explain.js";
-import { PROVIDERS, complete } from "../lib/providers.js";
+import { complete } from "../lib/providers.js";
 import { loadSettings, saveSettings } from "../lib/settings.js";
 
 const providerEl = document.querySelector("#provider");
@@ -30,7 +30,7 @@ function showProvider(next) {
   providerEl.value = next;
   keyEl.value = keys[next] || "";
   modelEl.value = models[next] || "";
-  modelEl.placeholder = PROVIDERS[next].defaultModel;
+  modelEl.placeholder = "";
 }
 
 function formSettings() {
