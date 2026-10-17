@@ -52,10 +52,11 @@ async function targetIds() {
   if ((selected.messages || []).length > 1) {
     return listedIds(selected, 50);
   }
-  if (!tab.displayedFolder) {
+  const folderId = tab.displayedFolder && tab.displayedFolder.id;
+  if (!folderId) {
     throw new Error("no-folder");
   }
-  return listedIds(await browser.messages.list(tab.displayedFolder), 50);
+  return listedIds(await browser.messages.list(folderId), 50);
 }
 
 function report(counts) {

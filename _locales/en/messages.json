@@ -3,7 +3,7 @@
     "message": "AI Sorting"
   },
   "extensionDescription": {
-    "message": "Sort mail into Important, Newsletters, and Social. Connect ChatGPT, OpenRouter, Gemini, or Grok to summarize a thread and draft a reply."
+    "message": "Sort messages into Important, Newsletters, and Social. Connect ChatGPT, OpenRouter, Gemini, or Grok to summarize a thread or draft a reply."
   },
   "actionTitle": {
     "message": "AI Sorting"
@@ -18,7 +18,7 @@
     "message": "AI Sorting"
   },
   "optionsLead": {
-    "message": "Rules sort obvious mail on this computer. A connected model is used when you ask, or when a message is hard to sort."
+    "message": "Rules on this computer sort the obvious messages. The model is used when you ask for it, or when a message is hard to sort."
   },
   "optionProvider": {
     "message": "Provider"
@@ -30,22 +30,22 @@
     "message": "Model"
   },
   "optionModelHelp": {
-    "message": "Leave this empty to use the provider’s default model."
+    "message": "Leave this blank to use the provider’s default model."
   },
   "optionAutoTitle": {
     "message": "Sort new inbox mail"
   },
   "optionAutoHelp": {
-    "message": "Apply tags when a message arrives in the inbox."
+    "message": "Tag messages as they arrive in the inbox."
   },
   "optionAiTitle": {
     "message": "Ask the model when rules are unsure"
   },
   "optionAiHelp": {
-    "message": "Sends the sender, subject, and the start of the message. At most 40 messages an hour."
+    "message": "Sends the sender, the subject, and the beginning of the message. At most 40 messages an hour."
   },
   "privacyNote": {
-    "message": "Rules run on this computer. The API key stays in this profile. The subject and a text excerpt are sent to the selected provider only when the model is called."
+    "message": "Rules run on this computer. The API key stays in this profile. The subject and a short excerpt are sent to the selected provider only when the model is called."
   },
   "save": {
     "message": "Save"
@@ -75,7 +75,7 @@
     "message": "Other"
   },
   "categoryNone": {
-    "message": "No category"
+    "message": "No tag"
   },
   "sourceRules": {
     "message": "rules"
@@ -104,19 +104,19 @@
     "message": "Draft reply"
   },
   "sortMail": {
-    "message": "Sort mail"
+    "message": "Sort messages"
   },
   "openOptions": {
     "message": "Settings"
   },
   "popupLead": {
-    "message": "When several messages are selected, those are sorted. Otherwise the current page of this folder is sorted, up to 50 messages. Tags show in the message list and in the quick filter."
+    "message": "If more than one message is selected, those messages are sorted. Otherwise the current page of this folder is sorted, up to 50 messages. Tags appear in the message list and in the quick filter."
   },
   "composeLead": {
     "message": "Replies and summaries are written in English."
   },
   "instruction": {
-    "message": "Instruction"
+    "message": "Instructions"
   },
   "instructionPlaceholder": {
     "message": "A short, friendly reply"
@@ -166,7 +166,7 @@
     }
   },
   "undecidedNote": {
-    "message": "Left unsorted: $COUNT$.",
+    "message": "Not sorted: $COUNT$.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -174,7 +174,7 @@
     }
   },
   "cappedNote": {
-    "message": "$COUNT$ left unsorted because the hourly limit was reached.",
+    "message": "$COUNT$ were not sorted because the hourly limit was reached.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -216,7 +216,7 @@
     "message": "Open a compose window first."
   },
   "errorSummaryEmpty": {
-    "message": "The thread has no readable text."
+    "message": "This thread has no text to summarize."
   },
   "errorNoFolder": {
     "message": "Open a mail folder first."

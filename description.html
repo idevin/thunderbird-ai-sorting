@@ -1,0 +1,85 @@
+<b>Sort messages, then summarize or reply.</b>
+
+<b>AI Sorting</b> tags messages as Important, Newsletters, or Social. Rules on this computer handle the obvious ones. Connect ChatGPT, OpenRouter, Gemini, or Grok when you want a summary, a draft reply, or a decision the rules cannot make.
+
+<b>Key features:</b>
+<ul>
+  <li>Tags appear in the message list and in the quick filter.</li>
+  <li>New inbox mail can be tagged as it arrives.</li>
+  <li>Summarize an open thread, or draft a reply, in English.</li>
+  <li>The API key stays in this profile. A message is sent to the provider only when the model is called.</li>
+</ul>
+
+<b>Installation:</b>
+<ol>
+  <li>In Thunderbird, open the menu and choose <b>Add-ons and Themes</b>.</li>
+  <li>Click the gear icon and choose <b>Install Add-on From File…</b>, then select the <code>.xpi</code>. Or type <code>AI Sorting</code> in the search field, open this add-on, and choose <b>Add to Thunderbird</b>.</li>
+  <li>When Thunderbird asks for access, choose <b>Add</b>.</li>
+  <li>Open the add-on settings and add an API key before using summaries, drafts, or model sorting.</li>
+</ol>
+
+This add-on needs Thunderbird 128 or newer.
+
+<b>Settings</b>
+Open <b>Settings</b> from the AI Sorting toolbar button, or from the add-on card in Add-ons and Themes.
+<ul>
+  <li><b>Provider</b> — ChatGPT, OpenRouter, Gemini, or Grok.</li>
+  <li><b>API key</b> — the key for that provider.</li>
+  <li><b>Model</b> — leave this blank to use the provider’s default model, or type a model name.</li>
+  <li><b>Sort new inbox mail</b> — tag messages as they arrive in the inbox.</li>
+  <li><b>Ask the model when rules are unsure</b> — sends the sender, the subject, and the beginning of the message. At most 40 messages an hour.</li>
+</ul>
+Choose <b>Save</b>, then <b>Test connection</b>. The status line confirms that the provider answered.
+
+<b>Sort a folder</b>
+Click the <b>AI Sorting</b> button on the mail toolbar.
+<ul>
+  <li><b>Sort messages</b> sorts the selected messages when more than one is selected. Otherwise it sorts the current page of the open folder, up to 50 messages.</li>
+  <li>The popup shows how many messages were marked Important, Newsletters, Social, and Other.</li>
+  <li><b>Settings</b> opens the options page.</li>
+</ul>
+Important, Newsletters, and Social are tags. Other means the message was classified and left without one of those tags. Messages the rules could not classify stay untagged when the model is off, the API key is missing, or the hourly limit is reached.
+
+<b>An open message</b>
+Open a message and click <b>Summarize and reply</b> on the message toolbar.
+<ul>
+  <li>The popup shows the current tag, if the message has one.</li>
+  <li><b>Sort again</b> classifies this message once more and notes whether the rules or the model decided.</li>
+  <li><b>Summarize thread</b> writes three short sections in English: Decisions, Open questions, and Next steps.</li>
+  <li><b>Draft reply</b> opens a reply window with an English draft.</li>
+</ul>
+
+<b>While writing</b>
+In a compose window, click <b>Draft with AI</b>.
+<ul>
+  <li>Type an instruction, such as “A short, friendly reply”, or leave it empty.</li>
+  <li><b>Make it shorter</b> tightens the current draft. <b>Politely decline</b> writes a brief refusal.</li>
+  <li><b>Insert into draft</b> places the text in the message you are writing.</li>
+</ul>
+Replies and summaries are written in English.
+
+<b>How a message is tagged</b>
+<ul>
+  <li><b>Newsletters</b> — mailing lists, bulk mail, and addresses such as noreply.</li>
+  <li><b>Social</b> — mail from social networks.</li>
+  <li><b>Important</b> — the sender is in your address book, or the message is addressed to one of your accounts.</li>
+  <li>Anything else waits for the model, when that option is on.</li>
+</ul>
+
+<b>Support the Developer</b>
+If this add-on makes your life a little easier, please consider supporting my open-source work! You can support the project via my website or send crypto directly:
+
+<a href="https://creotech.org/donate"><b>https://creotech.org/donate</b></a>
+
+<b>Crypto Wallets:</b>
+<ul>
+  <li><b>USDT (TRC20):</b> <code>THE9R17iLeBTgq2d9FprJkPTjZuWGmt8p3</code></li>
+  <li><b>USDT (ERC20):</b> <code>0xbb9267f75c91ddc724aedd479b0b77df779e824e</code></li>
+  <li><b>GRAM (TON):</b> <code>UQCZz1TdrRAXMVo20xfxm0bcJMEvl86slC04iGtScFUbDEYM</code></li>
+  <li><b>BTC:</b> <code>3BoWmP3TX15PCWwUojBLzghVGzYWkdHS6w</code></li>
+</ul>
+
+<b>Bug Reports &amp; Support:</b>
+If you encounter any issues or want to view the source code, please visit the GitHub repository or reach out via <a href="mailto:i.devin@creotech.org">i.devin@creotech.org</a>.
+
+<a href="https://github.com/idevin/thunderbird-ai-sorting">https://github.com/idevin/thunderbird-ai-sorting</a>
