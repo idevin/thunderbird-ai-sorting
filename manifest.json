@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.0.0",
+  "default_locale": "en",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ai-sorting@localhost",
+      "strict_min_version": "128.0"
+    }
+  },
+  "icons": {
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "permissions": [
+    "storage",
+    "messagesRead",
+    "messagesUpdate",
+    "messagesTags",
+    "messagesTagsList",
+    "accountsRead",
+    "addressBooks",
+    "compose"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://openrouter.ai/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.x.ai/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "__MSG_actionTitle__",
+    "default_popup": "popup/popup.html",
+    "default_icon": "icons/icon-32.png"
+  },
+  "message_display_action": {
+    "default_title": "__MSG_displayTitle__",
+    "default_popup": "display/display.html",
+    "default_icon": "icons/icon-32.png"
+  },
+  "compose_action": {
+    "default_title": "__MSG_composeTitle__",
+    "default_popup": "compose/compose.html",
+    "default_icon": "icons/icon-32.png"
+  }
+}

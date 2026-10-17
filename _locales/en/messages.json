@@ -1,0 +1,235 @@
+{
+  "extensionName": {
+    "message": "AI Sorting"
+  },
+  "extensionDescription": {
+    "message": "Sort mail into Important, Newsletters, and Social. Connect ChatGPT, OpenRouter, Gemini, or Grok to summarize a thread and draft a reply."
+  },
+  "actionTitle": {
+    "message": "AI Sorting"
+  },
+  "displayTitle": {
+    "message": "Summarize and reply"
+  },
+  "composeTitle": {
+    "message": "Draft with AI"
+  },
+  "optionsTitle": {
+    "message": "AI Sorting"
+  },
+  "optionsLead": {
+    "message": "Rules sort obvious mail on this computer. A connected model is used when you ask, or when a message is hard to sort."
+  },
+  "optionProvider": {
+    "message": "Provider"
+  },
+  "optionApiKey": {
+    "message": "API key"
+  },
+  "optionModel": {
+    "message": "Model"
+  },
+  "optionModelHelp": {
+    "message": "Leave this empty to use the provider’s default model."
+  },
+  "optionAutoTitle": {
+    "message": "Sort new inbox mail"
+  },
+  "optionAutoHelp": {
+    "message": "Apply tags when a message arrives in the inbox."
+  },
+  "optionAiTitle": {
+    "message": "Ask the model when rules are unsure"
+  },
+  "optionAiHelp": {
+    "message": "Sends the sender, subject, and the start of the message. At most 40 messages an hour."
+  },
+  "privacyNote": {
+    "message": "Rules run on this computer. The API key stays in this profile. The subject and a text excerpt are sent to the selected provider only when the model is called."
+  },
+  "save": {
+    "message": "Save"
+  },
+  "test": {
+    "message": "Test connection"
+  },
+  "saved": {
+    "message": "Saved."
+  },
+  "testOk": {
+    "message": "The provider answered."
+  },
+  "working": {
+    "message": "Working…"
+  },
+  "tagImportant": {
+    "message": "Important"
+  },
+  "tagNewsletters": {
+    "message": "Newsletters"
+  },
+  "tagSocial": {
+    "message": "Social"
+  },
+  "categoryOther": {
+    "message": "Other"
+  },
+  "categoryNone": {
+    "message": "No category"
+  },
+  "sourceRules": {
+    "message": "rules"
+  },
+  "sourceAi": {
+    "message": "model"
+  },
+  "categoryWithSource": {
+    "message": "$NAME$ · $SOURCE$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "source": {
+        "content": "$2"
+      }
+    }
+  },
+  "reclassify": {
+    "message": "Sort again"
+  },
+  "summarize": {
+    "message": "Summarize thread"
+  },
+  "draftReply": {
+    "message": "Draft reply"
+  },
+  "sortMail": {
+    "message": "Sort mail"
+  },
+  "openOptions": {
+    "message": "Settings"
+  },
+  "popupLead": {
+    "message": "When several messages are selected, those are sorted. Otherwise the current page of this folder is sorted, up to 50 messages. Tags show in the message list and in the quick filter."
+  },
+  "composeLead": {
+    "message": "The reply uses the language of the mail unless your instruction says otherwise."
+  },
+  "instruction": {
+    "message": "Instruction"
+  },
+  "instructionPlaceholder": {
+    "message": "A short, friendly reply"
+  },
+  "presetShorter": {
+    "message": "Make it shorter"
+  },
+  "presetDecline": {
+    "message": "Politely decline"
+  },
+  "insertDraft": {
+    "message": "Insert into draft"
+  },
+  "presetShorterInstruction": {
+    "message": "Make the current draft shorter and keep its meaning."
+  },
+  "presetDeclineInstruction": {
+    "message": "Politely decline. Be brief and courteous."
+  },
+  "defaultReplyInstruction": {
+    "message": "Write a helpful reply to the latest message."
+  },
+  "defaultComposeInstruction": {
+    "message": "Write a reply based on the quoted message and this draft."
+  },
+  "replyOpened": {
+    "message": "The reply draft is open."
+  },
+  "draftInserted": {
+    "message": "Inserted into the draft."
+  },
+  "classifyCounts": {
+    "message": "Important $IMPORTANT$, Newsletters $NEWSLETTERS$, Social $SOCIAL$, Other $OTHER$.",
+    "placeholders": {
+      "important": {
+        "content": "$1"
+      },
+      "newsletters": {
+        "content": "$2"
+      },
+      "social": {
+        "content": "$3"
+      },
+      "other": {
+        "content": "$4"
+      }
+    }
+  },
+  "undecidedNote": {
+    "message": "Left unsorted: $COUNT$.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "cappedNote": {
+    "message": "$COUNT$ left unsorted because the hourly limit was reached.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "skippedNote": {
+    "message": "Skipped: $COUNT$.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "failedNote": {
+    "message": "Errors: $COUNT$.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "errorMissingKey": {
+    "message": "Add an API key for the selected provider."
+  },
+  "networkError": {
+    "message": "Could not reach the provider."
+  },
+  "errorNoJson": {
+    "message": "The model did not return JSON."
+  },
+  "errorUnknownCategory": {
+    "message": "The model did not return a category."
+  },
+  "errorNoMessage": {
+    "message": "No message is open."
+  },
+  "errorNoCompose": {
+    "message": "Open a compose window first."
+  },
+  "errorSummaryEmpty": {
+    "message": "The thread has no readable text."
+  },
+  "errorNoFolder": {
+    "message": "Open a mail folder first."
+  },
+  "errorEmpty": {
+    "message": "The provider returned an empty answer."
+  },
+  "errorProvider": {
+    "message": "The provider returned an error. $DETAIL$",
+    "placeholders": {
+      "detail": {
+        "content": "$1"
+      }
+    }
+  }
+}
