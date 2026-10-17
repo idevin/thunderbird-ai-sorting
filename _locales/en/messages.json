@@ -63,13 +63,13 @@
     "message": "Working…"
   },
   "tagImportant": {
-    "message": "Important"
+    "message": "AI Important"
   },
   "tagNewsletters": {
-    "message": "Newsletters"
+    "message": "AI Newsletters"
   },
   "tagSocial": {
-    "message": "Social"
+    "message": "AI Social"
   },
   "categoryOther": {
     "message": "Other"

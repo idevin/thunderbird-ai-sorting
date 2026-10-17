@@ -82,6 +82,9 @@ function report(counts) {
   }
   if (counts.failed) {
     lines.push(browser.i18n.getMessage("failedNote", String(counts.failed)));
+    if (counts.error) {
+      lines.push(counts.error);
+    }
   }
   statusEl.textContent = lines.join(" ");
 }
