@@ -113,7 +113,7 @@
     "message": "When several messages are selected, those are sorted. Otherwise the current page of this folder is sorted, up to 50 messages. Tags show in the message list and in the quick filter."
   },
   "composeLead": {
-    "message": "The reply uses the language of the mail unless your instruction says otherwise."
+    "message": "Replies and summaries are written in English."
   },
   "instruction": {
     "message": "Instruction"
