@@ -197,7 +197,6 @@ test("secrets are redacted and settings keep each provider", () => {
   assert.equal(settings.useAiForUncertain, true);
   assert.equal(settings.keys.gemini, "secret");
   assert.equal(settings.keys.openai, "sk");
-  assert.equal(settings.keys.grok, "");
   assert.equal(settings.models.gemini, "gemini-2.5-flash");
   assert.equal(normalizeSettings({ provider: "nope" }).provider, "openai");
 });

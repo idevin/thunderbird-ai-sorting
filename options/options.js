@@ -10,8 +10,8 @@ const useAiEl = document.querySelector("#use-ai");
 const statusEl = document.querySelector("#status");
 const errorEl = document.querySelector("#error");
 
-let keys = { openai: "", openrouter: "", gemini: "", grok: "" };
-let models = { openai: "", openrouter: "", gemini: "", grok: "" };
+let keys = { openai: "", gemini: "" };
+let models = { openai: "", gemini: "" };
 let provider = "openai";
 let loaded = false;
 

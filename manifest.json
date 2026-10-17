@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "AI Sorting",
-  "description": "Files mail into a folder for each service it comes from. Connect ChatGPT, OpenRouter, Gemini, or Grok to summarize a thread or draft a reply.",
-  "version": "1.0.9",
+  "description": "Files mail into a folder for each service it comes from. Connect ChatGPT or Gemini to summarize a thread or draft a reply.",
+  "version": "1.0.10",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
@@ -26,9 +26,7 @@
   ],
   "host_permissions": [
     "https://api.openai.com/*",
-    "https://openrouter.ai/*",
-    "https://generativelanguage.googleapis.com/*",
-    "https://api.x.ai/*"
+    "https://generativelanguage.googleapis.com/*"
   ],
   "background": {
     "scripts": ["background.js"],

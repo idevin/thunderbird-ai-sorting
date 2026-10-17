@@ -3,7 +3,7 @@
     "message": "AI Sorting"
   },
   "extensionDescription": {
-    "message": "Sort messages into Important, Newsletters, and Social. Connect ChatGPT, OpenRouter, Gemini, or Grok to summarize a thread or draft a reply."
+    "message": "Files mail into a folder for each service it comes from. Connect ChatGPT or Gemini to summarize a thread or draft a reply."
   },
   "actionTitle": {
     "message": "AI Sorting"
