@@ -83,7 +83,7 @@ function report(counts) {
 sortButton.addEventListener("click", async () => {
   showError(null);
   sortButton.disabled = true;
-  statusEl.textContent = browser.i18n.getMessage("working");
+  statusEl.textContent = "Sorting every message. This can take a long time.";
   try {
     const messageIds = await targetIds();
     const counts = await browser.runtime.sendMessage({ type: "classify-many", messageIds });

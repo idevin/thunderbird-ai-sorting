@@ -110,7 +110,7 @@
     "message": "Settings"
   },
   "popupLead": {
-    "message": "If more than one message is selected, those messages are sorted. Otherwise the whole open folder is sorted."
+    "message": "Every message in the open folder is sorted, or every message you selected. A large folder can take a long time."
   },
   "composeLead": {
     "message": "Replies and summaries are written in English."
