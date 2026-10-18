@@ -214,3 +214,5 @@ User: ping
 ```
 
 Any answer without an error is enough. The answer text is not shown in the UI.
+
+[![Give me a beer](https://img.shields.io/badge/Give%20me%20a%20beer-%F0%9F%8D%BA-FFDD00)](https://creotech.org/donate)
