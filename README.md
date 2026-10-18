@@ -4,6 +4,22 @@ A Thunderbird 128+ MailExtension (Manifest V3). Mail from a service is filed int
 
 Version in `manifest.json`: 1.0.12. Identifier: `ai-sorting-and-answering@localhost`.
 
+## Install from a file
+
+1. Download [`releases/ai-sorting-and-answering-1.0.12.xpi`](releases/ai-sorting-and-answering-1.0.12.xpi).
+2. In Thunderbird, open the menu and choose **Add-ons and Themes**.
+3. Click the gear icon and choose **Install Add-on From File…**.
+4. Select the downloaded `.xpi` file.
+5. When Thunderbird asks for access, choose **Add**.
+6. Open the add-on settings and add an API key before using summaries, drafts, or model sorting.
+
+## Install from add-on search
+
+1. In Thunderbird, open the menu and choose **Add-ons and Themes**.
+2. In the search field, type `ai-sorting-and-answering` and press Enter.
+3. Open the result for this add-on, by Ilya Devin, and choose **Add to Thunderbird**.
+4. When Thunderbird asks for access, choose **Add**.
+
 ## Layout
 
 ```
