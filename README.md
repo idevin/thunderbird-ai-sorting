@@ -2,7 +2,7 @@
 
 A Thunderbird 128+ MailExtension (Manifest V3). Mail from a service is filed into a folder of that name under the inbox. Mail from a person stays in the inbox. ChatGPT or Gemini is used when the rules cannot name the sender, and when you ask for a thread summary or a reply draft.
 
-Version in `manifest.json`: 1.0.11. Identifier: `ai-sorting-and-answering@localhost`.
+Version in `manifest.json`: 1.0.12. Identifier: `ai-sorting-and-answering@localhost`.
 
 ## Layout
 

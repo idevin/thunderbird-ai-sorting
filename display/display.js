@@ -1,4 +1,5 @@
 import { explain } from "../lib/explain.js";
+import { isInboxFolder } from "../lib/folders.js";
 
 const categoryEl = document.querySelector("#category");
 const summaryEl = document.querySelector("#summary");
@@ -26,8 +27,7 @@ function setBusy(next) {
 
 function folderLabel(message) {
   const folder = message && message.folder;
-  const special = (folder && folder.specialUse) || [];
-  if (!folder || folder.type === "inbox" || special.includes("inbox")) {
+  if (!folder || isInboxFolder(folder)) {
     return "Inbox";
   }
   return folder.name || "Inbox";

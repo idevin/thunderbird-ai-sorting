@@ -1,5 +1,6 @@
 import { draftInCompose, draftReply, summarizeMessage } from "./lib/assist.js";
 import { classifyMessage, loadAccountEmails } from "./lib/classify.js";
+import { isInboxFolder } from "./lib/folders.js";
 import { redact } from "./lib/providers.js";
 import { loadSettings } from "./lib/settings.js";
 import {
@@ -198,7 +199,7 @@ function whenReady() {
 }
 
 browser.messages.onNewMailReceived.addListener(async (folder, list) => {
-  if (!folder || folder.type !== "inbox") {
+  if (!isInboxFolder(folder)) {
     return;
   }
   const settings = await loadSettings();

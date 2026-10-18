@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { isInboxFolder } from "../lib/folders.js";
 import { classifyHeuristic } from "../lib/heuristic.js";
 import { resolveTagKeys } from "../lib/tags.js";
 import {
@@ -13,6 +14,14 @@ import {
 import { normalizeSettings } from "../lib/settings.js";
 import { messageText, plainExcerpt, replyHtml, stripHtml } from "../lib/text.js";
 import { clipThread, extractMessageIds, normalizeMessageId, normalizeSubject } from "../lib/thread.js";
+
+test("an inbox is recognized by specialUse", () => {
+  assert.equal(isInboxFolder({ specialUse: ["inbox"] }), true);
+  assert.equal(isInboxFolder({ specialUse: ["inbox", "favorite"] }), true);
+  assert.equal(isInboxFolder({ type: "inbox" }), false);
+  assert.equal(isInboxFolder({ specialUse: ["sent"] }), false);
+  assert.equal(isInboxFolder(null), false);
+});
 
 test("an existing Important tag is reused", () => {
   const keys = resolveTagKeys(
