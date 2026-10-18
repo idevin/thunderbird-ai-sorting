@@ -1,21 +1,21 @@
 {
   "extensionName": {
-    "message": "AI Sorting"
+    "message": "ai-sorting-and-answering"
   },
   "extensionDescription": {
     "message": "Files mail into a folder for each service it comes from. Connect ChatGPT or Gemini to summarize a thread or draft a reply."
   },
   "actionTitle": {
-    "message": "AI Sorting"
+    "message": "ai-sorting-and-answering"
   },
   "displayTitle": {
     "message": "Summarize and reply"
   },
   "composeTitle": {
-    "message": "Draft with AI"
+    "message": "Answer with AI"
   },
   "optionsTitle": {
-    "message": "AI Sorting"
+    "message": "ai-sorting-and-answering"
   },
   "optionsLead": {
     "message": "Rules on this computer sort the obvious messages. The model is used when you ask for it, or when a message is hard to sort."
@@ -115,32 +115,8 @@
   "composeLead": {
     "message": "Replies and summaries are written in English."
   },
-  "instruction": {
-    "message": "Instructions"
-  },
-  "instructionPlaceholder": {
-    "message": "A short, friendly reply"
-  },
-  "presetShorter": {
-    "message": "Make it shorter"
-  },
-  "presetDecline": {
-    "message": "Politely decline"
-  },
-  "insertDraft": {
-    "message": "Insert into draft"
-  },
-  "presetShorterInstruction": {
-    "message": "Make the current draft shorter and keep its meaning."
-  },
-  "presetDeclineInstruction": {
-    "message": "Politely decline. Be brief and courteous."
-  },
   "defaultReplyInstruction": {
     "message": "Write a helpful reply to the latest message."
-  },
-  "defaultComposeInstruction": {
-    "message": "Write a reply based on the quoted message and this draft."
   },
   "replyOpened": {
     "message": "The reply draft is open."

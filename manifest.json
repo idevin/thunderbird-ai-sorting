@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "AI Sorting",
+  "name": "ai-sorting-and-answering",
   "description": "Files mail into a folder for each service it comes from. Connect ChatGPT or Gemini to summarize a thread or draft a reply.",
   "version": "1.0.11",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
-      "id": "ai-sorting@localhost",
+      "id": "ai-sorting-and-answering@localhost",
       "strict_min_version": "128.0"
     }
   },
@@ -38,7 +38,7 @@
     "open_in_tab": true
   },
   "action": {
-    "default_title": "AI Sorting",
+    "default_title": "ai-sorting-and-answering",
     "default_popup": "popup/popup.html",
     "default_icon": "icons/icon-32.png"
   },
@@ -48,7 +48,7 @@
     "default_icon": "icons/icon-32.png"
   },
   "compose_action": {
-    "default_title": "Draft with AI",
+    "default_title": "Answer with AI",
     "default_popup": "compose/compose.html",
     "default_icon": "icons/icon-32.png"
   }

@@ -11,7 +11,7 @@ import {
   redact,
 } from "../lib/providers.js";
 import { normalizeSettings } from "../lib/settings.js";
-import { messageText, replyHtml, stripHtml } from "../lib/text.js";
+import { messageText, plainExcerpt, replyHtml, stripHtml } from "../lib/text.js";
 import { clipThread, extractMessageIds, normalizeMessageId, normalizeSubject } from "../lib/thread.js";
 
 test("an existing Important tag is reused", () => {
@@ -158,6 +158,8 @@ test("plain text is preferred and attachments are skipped", () => {
   });
   assert.equal(text, "Hello");
   assert.equal(stripHtml("<style>p{}</style><p>A &amp; B</p>"), "A & B");
+  assert.equal(plainExcerpt("<style>p{}</style><p>Hello, <b>world</b>!</p>" + "x".repeat(2000), 12), "Hello, world!");
+  assert.equal([...plainExcerpt("Hi. " + "a".repeat(50), 5)].filter(char => /[\p{L}\p{N}\p{P}]/u.test(char)).length, 5);
   assert.equal(replyHtml("Hi <there>\n\nLine"), "<p>Hi &lt;there&gt;</p><p>Line</p>");
 });
 

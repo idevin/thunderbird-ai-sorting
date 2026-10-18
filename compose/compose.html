@@ -2,22 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Draft with AI</title>
+    <title>Answer with AI</title>
     <link rel="stylesheet" href="../ui.css" />
     <link rel="stylesheet" href="compose.css" />
   </head>
   <body class="popup">
     <main>
-      <h1>Draft with AI</h1>
-      <p class="lead">Replies and summaries are written in English.</p>
-      <label class="field" for="instruction">
-        <span>Instructions</span>
-        <textarea id="instruction" rows="4"></textarea>
+      <h1>Answer with AI</h1>
+      <p class="lead">Replies are written in English.</p>
+      <label class="field" for="style">
+        <span>Style</span>
+        <select id="style">
+          <option value="polite">Polite</option>
+          <option value="funny">Funny</option>
+          <option value="sad">Sad</option>
+          <option value="tricky">Tricky</option>
+          <option value="angry">Angry</option>
+          <option value="philosophic">Philosophic</option>
+          <option value="buddha">Buddha</option>
+          <option value="formal">Formal</option>
+          <option value="warm">Warm</option>
+          <option value="brief">Brief</option>
+          <option value="dry">Dry</option>
+        </select>
       </label>
       <div class="row">
-        <button id="insert" class="primary" type="button">Insert into draft</button>
-        <button id="shorter" type="button">Make it shorter</button>
-        <button id="decline" type="button">Politely decline</button>
+        <button id="answer" class="primary" type="button">Answer</button>
+        <button id="decline" type="button">Decline</button>
       </div>
       <p id="status" role="status"></p>
       <p id="error" class="error" hidden></p>

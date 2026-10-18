@@ -59,7 +59,7 @@ async function idsForTab(tabId) {
   try {
     tab = await browser.mailTabs.get(tabId);
   } catch (error) {
-    console.error("AI Sorting", redact(error && error.message));
+    console.error("ai-sorting-and-answering", redact(error && error.message));
     throw new Error("no-folder");
   }
   const selected = await browser.mailTabs.getSelectedMessages(tabId);
@@ -80,7 +80,7 @@ async function persist() {
   try {
     await browser.storage.session.set({ [SESSION_KEY]: serializeSortJob(job) });
   } catch (error) {
-    console.error("AI Sorting", redact(error && error.message));
+    console.error("ai-sorting-and-answering", redact(error && error.message));
   }
 }
 
@@ -96,14 +96,14 @@ async function disarmAlarm() {
   try {
     await browser.alarms.clear(ALARM);
   } catch (error) {
-    console.error("AI Sorting", redact(error && error.message));
+    console.error("ai-sorting-and-answering", redact(error && error.message));
     return;
   }
   if (generation !== sortGeneration && job && job.running) {
     try {
       await armAlarm();
     } catch (error) {
-      console.error("AI Sorting", redact(error && error.message));
+      console.error("ai-sorting-and-answering", redact(error && error.message));
     }
   }
 }
@@ -150,7 +150,7 @@ async function pump() {
       } catch (error) {
         const detail = redact(error && error.message);
         noteFailure(job, detail);
-        console.error("AI Sorting", detail);
+        console.error("ai-sorting-and-answering", detail);
       }
       await persist();
     }
@@ -158,7 +158,7 @@ async function pump() {
     await persist();
   } catch (error) {
     const fatal = error && error.message === "no-folder" ? "no-folder" : redact(error && error.message);
-    console.error("AI Sorting", fatal);
+    console.error("ai-sorting-and-answering", fatal);
     failSortJob(job, fatal);
     await persist();
   } finally {
@@ -174,7 +174,7 @@ async function resumeSort() {
     const stored = await browser.storage.session.get(SESSION_KEY);
     job = restoreSortJob(stored && stored[SESSION_KEY]);
   } catch (error) {
-    console.error("AI Sorting", redact(error && error.message));
+    console.error("ai-sorting-and-answering", redact(error && error.message));
     job = null;
   }
   if (!job || !job.running) {
@@ -186,7 +186,7 @@ async function resumeSort() {
       await armAlarm();
     }
   } catch (error) {
-    console.error("AI Sorting", redact(error && error.message));
+    console.error("ai-sorting-and-answering", redact(error && error.message));
   }
 }
 
@@ -218,7 +218,7 @@ browser.messages.onNewMailReceived.addListener(async (folder, list) => {
         bookCache,
       });
     } catch (error) {
-      console.error("AI Sorting", redact(error && error.message));
+      console.error("ai-sorting-and-answering", redact(error && error.message));
     }
   }
 });
